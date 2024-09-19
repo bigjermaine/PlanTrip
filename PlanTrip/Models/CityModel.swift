@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct City: Identifiable {
+    let id = UUID()
+    let name: String
+    let region: String
+    let country: String
+    let countryCode: String
+}
