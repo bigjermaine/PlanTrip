@@ -13,38 +13,55 @@ struct CreateTripView: View {
   @State private var tripText = ""
   @State private var birthMonth: DropdownMenuOption? = nil
     var body: some View {
-      VStack(spacing:20){
-        topView
-          .padding(.horizontal)
-        VStack(alignment:.leading,spacing: 20){
-          VStack(alignment:.leading){
-            Text("Create a Trip")
-              .font(.satoshiBold(size: 14))
-              .foregroundColor(.blackText)
-            Text("Let's Go! Build Your Next Adventure")
-              .font(.satoshiBold(size: 12))
-              .foregroundColor(.grayText)
+      ScrollView{
+        VStack(spacing:20){
+          topView
+            .padding(.horizontal)
+          VStack(alignment:.leading,spacing: 20){
+            VStack(alignment:.leading){
+              Text("Create a Trip")
+                .font(.satoshiBold(size: 14))
+                .foregroundColor(.blackText)
+              Text("Let's Go! Build Your Next Adventure")
+                .font(.satoshiBold(size: 12))
+                .foregroundColor(.grayText)
+            }
+            .frame(maxWidth:.infinity, alignment: .leading)
+            .padding(.horizontal)
+            VStack(spacing:20){
+              tripView
+                .padding(.horizontal)
+              travelStyleView
+                .padding(.horizontal)
+              DropdownMenu(
+                selectedOption: self.$birthMonth,
+                placeholder: "Select your travle style",
+                options: DropdownMenuOption.testAllMonths)
+              tripDescription
+                .padding(.horizontal)
+            }
+
+            Button(action: {
+
+            }) {
+                Text("Next")
+                     .font(.satoshiBold(size: 14))
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.blue.opacity(0.2))
+                    .foregroundColor(.white)
+                    .cornerRadius(4)
+
+            }
+            .padding(.horizontal)
+
+
+
           }
           .frame(maxWidth:.infinity, alignment: .leading)
-          .padding(.horizontal)
-          VStack(spacing:20){
-            tripView
-              .padding(.horizontal)
-            travelStyleView
-              .padding(.horizontal)
-          DropdownMenu(
-          selectedOption: self.$birthMonth,
-          placeholder: "Select your travle style",
-          options: DropdownMenuOption.testAllMonths)
-          tripDescription
-              .padding(.horizontal)
-          }
 
         }
-        .frame(maxWidth:.infinity, alignment: .leading)
-
       }
-
     }
 }
 
@@ -116,14 +133,14 @@ extension CreateTripView {
            RoundedRectangle(cornerRadius: 4)
             .fill(Color.white)
          )
-        .overlay(textViewBorder())
-        .focused($isTripTextFieldFocused)
+        .overlay(travelTextViewBorder())
+        .focused($isTravelTextFieldFocused)
     }
     .frame(maxWidth:.infinity, alignment: .leading)
   }
 
   private func travelTextViewBorder() -> some View {
-      RoundedRectangle(cornerRadius: 4, style: .continuous) .stroke(isTravelTextFieldFocused ? Color.blue : Color.clear, lineWidth: 1)
+      RoundedRectangle(cornerRadius: 4, style: .continuous) .stroke(isTravelTextFieldFocused ? Color.blue : Color.grayText, lineWidth: 1)
       .focused($isTravelTextFieldFocused)
   }
   private func textViewBorder() -> some View {

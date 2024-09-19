@@ -42,7 +42,7 @@ struct DropdownMenu: View {
 		.padding()
 		.overlay {
 			RoundedRectangle(cornerRadius: 5)
-        .stroke(.grayText, lineWidth: 2)
+        .stroke(.grayText, lineWidth: 1)
 		}
 		.overlay(alignment: .top) {
 			VStack {
