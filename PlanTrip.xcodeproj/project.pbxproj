@@ -11,6 +11,17 @@
 		D0A5676F2C9BEAF1007EE3A3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A5676E2C9BEAF1007EE3A3 /* ContentView.swift */; };
 		D0A567712C9BEAF3007EE3A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A567702C9BEAF3007EE3A3 /* Assets.xcassets */; };
 		D0A567742C9BEAF3007EE3A3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A567732C9BEAF3007EE3A3 /* Preview Assets.xcassets */; };
+		D0A567862C9BF984007EE3A3 /* FontConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A567852C9BF984007EE3A3 /* FontConstants.swift */; };
+		D0A567972C9C02FA007EE3A3 /* Satoshi-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0A5678D2C9C02FA007EE3A3 /* Satoshi-LightItalic.otf */; };
+		D0A567982C9C02FA007EE3A3 /* Satoshi-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0A5678E2C9C02FA007EE3A3 /* Satoshi-Medium.otf */; };
+		D0A567992C9C02FA007EE3A3 /* Satoshi-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0A5678F2C9C02FA007EE3A3 /* Satoshi-Italic.otf */; };
+		D0A5679A2C9C02FA007EE3A3 /* Satoshi-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0A567902C9C02FA007EE3A3 /* Satoshi-Black.otf */; };
+		D0A5679B2C9C02FB007EE3A3 /* Satoshi-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0A567912C9C02FA007EE3A3 /* Satoshi-Regular.otf */; };
+		D0A5679C2C9C02FB007EE3A3 /* Satoshi-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0A567922C9C02FA007EE3A3 /* Satoshi-MediumItalic.otf */; };
+		D0A5679D2C9C02FB007EE3A3 /* Satoshi-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0A567932C9C02FA007EE3A3 /* Satoshi-BoldItalic.otf */; };
+		D0A5679E2C9C02FB007EE3A3 /* Satoshi-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0A567942C9C02FA007EE3A3 /* Satoshi-BlackItalic.otf */; };
+		D0A5679F2C9C02FB007EE3A3 /* Satoshi-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0A567952C9C02FA007EE3A3 /* Satoshi-Light.otf */; };
+		D0A567A02C9C02FB007EE3A3 /* Satoshi-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0A567962C9C02FA007EE3A3 /* Satoshi-Bold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +30,18 @@
 		D0A5676E2C9BEAF1007EE3A3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D0A567702C9BEAF3007EE3A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0A567732C9BEAF3007EE3A3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D0A567832C9BF74D007EE3A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D0A567852C9BF984007EE3A3 /* FontConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontConstants.swift; sourceTree = "<group>"; };
+		D0A5678D2C9C02FA007EE3A3 /* Satoshi-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Satoshi-LightItalic.otf"; sourceTree = "<group>"; };
+		D0A5678E2C9C02FA007EE3A3 /* Satoshi-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Satoshi-Medium.otf"; sourceTree = "<group>"; };
+		D0A5678F2C9C02FA007EE3A3 /* Satoshi-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Satoshi-Italic.otf"; sourceTree = "<group>"; };
+		D0A567902C9C02FA007EE3A3 /* Satoshi-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Satoshi-Black.otf"; sourceTree = "<group>"; };
+		D0A567912C9C02FA007EE3A3 /* Satoshi-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Satoshi-Regular.otf"; sourceTree = "<group>"; };
+		D0A567922C9C02FA007EE3A3 /* Satoshi-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Satoshi-MediumItalic.otf"; sourceTree = "<group>"; };
+		D0A567932C9C02FA007EE3A3 /* Satoshi-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Satoshi-BoldItalic.otf"; sourceTree = "<group>"; };
+		D0A567942C9C02FA007EE3A3 /* Satoshi-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Satoshi-BlackItalic.otf"; sourceTree = "<group>"; };
+		D0A567952C9C02FA007EE3A3 /* Satoshi-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Satoshi-Light.otf"; sourceTree = "<group>"; };
+		D0A567962C9C02FA007EE3A3 /* Satoshi-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Satoshi-Bold.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +74,9 @@
 		D0A5676B2C9BEAF1007EE3A3 /* PlanTrip */ = {
 			isa = PBXGroup;
 			children = (
+				D0A5678C2C9C02E8007EE3A3 /* Fonts */,
+				D0A567842C9BF96D007EE3A3 /* Extension */,
+				D0A567832C9BF74D007EE3A3 /* Info.plist */,
 				D0A5676C2C9BEAF1007EE3A3 /* PlanTripApp.swift */,
 				D0A5676E2C9BEAF1007EE3A3 /* ContentView.swift */,
 				D0A567702C9BEAF3007EE3A3 /* Assets.xcassets */,
@@ -65,6 +91,31 @@
 				D0A567732C9BEAF3007EE3A3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D0A567842C9BF96D007EE3A3 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D0A567852C9BF984007EE3A3 /* FontConstants.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		D0A5678C2C9C02E8007EE3A3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D0A567902C9C02FA007EE3A3 /* Satoshi-Black.otf */,
+				D0A567942C9C02FA007EE3A3 /* Satoshi-BlackItalic.otf */,
+				D0A567962C9C02FA007EE3A3 /* Satoshi-Bold.otf */,
+				D0A567932C9C02FA007EE3A3 /* Satoshi-BoldItalic.otf */,
+				D0A5678F2C9C02FA007EE3A3 /* Satoshi-Italic.otf */,
+				D0A567952C9C02FA007EE3A3 /* Satoshi-Light.otf */,
+				D0A5678D2C9C02FA007EE3A3 /* Satoshi-LightItalic.otf */,
+				D0A5678E2C9C02FA007EE3A3 /* Satoshi-Medium.otf */,
+				D0A567922C9C02FA007EE3A3 /* Satoshi-MediumItalic.otf */,
+				D0A567912C9C02FA007EE3A3 /* Satoshi-Regular.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,7 +176,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0A567A02C9C02FB007EE3A3 /* Satoshi-Bold.otf in Resources */,
 				D0A567742C9BEAF3007EE3A3 /* Preview Assets.xcassets in Resources */,
+				D0A5679A2C9C02FA007EE3A3 /* Satoshi-Black.otf in Resources */,
+				D0A5679D2C9C02FB007EE3A3 /* Satoshi-BoldItalic.otf in Resources */,
+				D0A567972C9C02FA007EE3A3 /* Satoshi-LightItalic.otf in Resources */,
+				D0A567982C9C02FA007EE3A3 /* Satoshi-Medium.otf in Resources */,
+				D0A5679E2C9C02FB007EE3A3 /* Satoshi-BlackItalic.otf in Resources */,
+				D0A5679F2C9C02FB007EE3A3 /* Satoshi-Light.otf in Resources */,
+				D0A567992C9C02FA007EE3A3 /* Satoshi-Italic.otf in Resources */,
+				D0A5679B2C9C02FB007EE3A3 /* Satoshi-Regular.otf in Resources */,
+				D0A5679C2C9C02FB007EE3A3 /* Satoshi-MediumItalic.otf in Resources */,
 				D0A567712C9BEAF3007EE3A3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0A567862C9BF984007EE3A3 /* FontConstants.swift in Sources */,
 				D0A5676F2C9BEAF1007EE3A3 /* ContentView.swift in Sources */,
 				D0A5676D2C9BEAF1007EE3A3 /* PlanTripApp.swift in Sources */,
 			);
@@ -274,6 +336,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PlanTrip/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlanTrip/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -302,6 +365,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PlanTrip/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlanTrip/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
