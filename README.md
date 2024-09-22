@@ -122,7 +122,6 @@ The NetworkManager class is responsible for handling network requests. It provid
 
 Class Definition
 swift
-Copy code
 class NetworkManager {
     static let shared = NetworkManager()
     
