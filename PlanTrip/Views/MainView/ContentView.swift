@@ -19,10 +19,12 @@ struct ContentView: View {
                 tripHotelView
                 activitiesHotelView
             }
-            .padding(.horizontal, 16) // Adjust this value as needed for overall padding
+            .padding(.horizontal, 16)
             .padding(.bottom, 20)
+          
         }
-        .frame(maxWidth: .infinity)
+        .edgesIgnoringSafeArea(.all)
+        .frame(maxWidth: .infinity,maxHeight: .infinity)
         .navigationBarBackButtonHidden()
     }
 }
@@ -37,6 +39,7 @@ extension ContentView {
             Image("body")
                 .imageScale(.large)
                 .frame(maxWidth: .infinity, maxHeight: 235)
+          
             VStack(alignment: .leading, spacing: 10) {
                 HStack {
                     Image("CalendarImage")
@@ -69,6 +72,7 @@ extension ContentView {
                 }
             }
             .padding(.horizontal)
+
         }
         .frame(maxWidth: .infinity)
     }

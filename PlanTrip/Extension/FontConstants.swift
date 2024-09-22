@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SwiftUI
+
 extension Font {
     static func satoshiRegular(size: CGFloat) -> Font {
         return Font.custom("Satoshi-Regular", size: size)
