@@ -15,7 +15,7 @@ CityError.requestFailed(error): Thrown if the network request fails or if decodi
 Usage Example:
 
 swift
-Copy code
+
 do {
     let cities = try await NetworkManager.shared.fetchCities()
     // Process cities
@@ -33,7 +33,7 @@ CityError.requestFailed(error): Thrown if the network request fails or if decodi
 Usage Example:
 
 swift
-Copy code
+
 do {
     let options = try await NetworkManager.shared.fetchOptions()
     // Process options
@@ -45,10 +45,37 @@ The NetworkManager utilizes a custom error type, CityError, which provides speci
 
 Example of the CityError Enum
 swift
-Copy code
+
+enum RegistrationError:Error {
+    case invalidPhoneNumber
+    case errorTitle
+    case nonSetupDetails
+    case errorCreatingTrip
+    case errorOtp
+    case deletingAccount
+    var errorDescription:String? {
+        switch self {
+        case .invalidPhoneNumber:
+            return "PhoneNumber is invalid"
+        case .errorTitle:
+            return "Error"
+        case .errorOtp:
+            return "Error Otp"
+        case .deletingAccount:
+            return  "Warning Deleting Account"
+        case .nonSetupDetails:
+          return "Kindly choose a city, start and end date"
+        case .errorCreatingTrip:
+          return "Kindly choose a trip style or fill in all details"
+        }
+    }
+}
+
+
 enum CityError: Error, LocalizedError {
     case invalidURL
     case requestFailed(Error)
+    case decodingFailed(Error)
 
     var errorDescription: String? {
         switch self {
@@ -56,9 +83,12 @@ enum CityError: Error, LocalizedError {
             return "The URL is invalid."
         case .requestFailed(let error):
             return "Request failed: \(error.localizedDescription)"
+        case .decodingFailed(let error):
+            return "Decoding failed: \(error.localizedDescription)"
         }
     }
 }
+
 Conclusion
 The NetworkManager class provides a streamlined approach to making network requests in Swift, utilizing the modern async/await paradigm for simplicity and efficiency. By encapsulating the network logic in a single class, the codebase remains organized and maintainable.
 
