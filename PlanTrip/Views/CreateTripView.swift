@@ -12,6 +12,10 @@ struct CreateTripView: View {
   @FocusState private var isTravelTextFieldFocused: Bool
   @State private var tripText = ""
   @State private var birthMonth: DropdownMenuOption? = nil
+  @EnvironmentObject private var setupViewModel :SetupViewModel
+  @State private var showAlertView: Bool = false
+  @EnvironmentObject private var nav:MoreNavigationManager
+  @Binding  var toogleButtonSheet:Bool
     var body: some View {
       ScrollView{
         VStack(spacing:20){
@@ -34,21 +38,29 @@ struct CreateTripView: View {
               travelStyleView
                 .padding(.horizontal)
               DropdownMenu(
-                selectedOption: self.$birthMonth,
+                selectedOption: $setupViewModel.tripStyle,
                 placeholder: "Select your travle style",
                 options: DropdownMenuOption.testAllMonths)
-              tripDescription
+                tripDescription
                 .padding(.horizontal)
             }
 
             Button(action: {
+              setupViewModel.tripSetup()
+              if   setupViewModel.tripCreateDisabled {
+                toogleButtonSheet = false
+                nav.loadView(.main)
 
+              }else {
+                showAlertView = true
+
+              }
             }) {
                 Text("Next")
                      .font(.satoshiBold(size: 14))
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color.blue.opacity(0.2))
+                    .background(Color.blue)
                     .foregroundColor(.white)
                     .cornerRadius(4)
 
@@ -61,12 +73,16 @@ struct CreateTripView: View {
           .frame(maxWidth:.infinity, alignment: .leading)
 
         }
+        .padding(.top,40)
+        .alert(isPresented:$showAlertView) {
+          Alert(title: Text("Alert"),message:Text(setupViewModel.error ?? ""), dismissButton: .cancel())
+        }
       }
     }
 }
 
 #Preview {
-    CreateTripView()
+  CreateTripView(toogleButtonSheet:.constant(false))
 }
 
 
@@ -77,9 +93,9 @@ extension CreateTripView {
       Image("profile")
       Spacer()
       Button{
-
+       toogleButtonSheet = false
       }label: {
-        Text("X")
+          Image(systemName:"xmark")
           .font(.satoshiBold(size: 20))
           .foregroundColor(.blackText)
       }
@@ -93,7 +109,7 @@ extension CreateTripView {
         .font(.satoshiMedium(size: 14))
         .foregroundColor(.blackText)
 
-      TextField("Enter the trip name", text: $tripText)
+      TextField("Enter the trip name", text: $setupViewModel.tripName)
        .frame(height: 50)
        .font(.satoshiMedium(size: 14))
        .padding(5)
@@ -124,7 +140,7 @@ extension CreateTripView {
         .font(.satoshiMedium(size: 14))
         .foregroundColor(.blackText)
 
-      TextField("Tell us more about the trip", text: $tripText)
+      TextField("Tell us more about the trip", text: $setupViewModel.tripDescription)
       .multilineTextAlignment(.leading)
       .font(.satoshiMedium(size: 14))
        .frame(height:200)

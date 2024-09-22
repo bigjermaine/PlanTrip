@@ -18,7 +18,8 @@ struct DatePickerView: View {
         formatter.dateFormat = "EEE, MMM d"
         return formatter
     }()
-
+  @EnvironmentObject private var setupViewModel :SetupViewModel
+  @EnvironmentObject private var nav:MoreNavigationManager
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
@@ -36,7 +37,9 @@ struct DatePickerView: View {
                 }
 
                 Button(action: {
-                    print("Dates selected: \(dateFormatter.string(from: startDate)) - \(dateFormatter.string(from: endDate))")
+                  setupViewModel.startDate = startDate.formatted(.dateTime.day().month().year())
+                  setupViewModel.endDate = endDate.formatted(.dateTime.day().month().year())
+                  nav.goToRoot()
                 }) {
                     Text("Choose Date")
                          .font(.satoshiBold(size: 14))
@@ -48,16 +51,23 @@ struct DatePickerView: View {
                 }
             }
             .padding()
-            .navigationTitle("gopaddi.com/flights")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {}) {
+                    Button(action: {
+                      nav.goToRoot()
+                    }) {
                         Image(systemName: "xmark")
+                        .foregroundStyle(.black)
+                       Text("Date")
+                      .font(.satoshiBold(size: 18))
+                      .foregroundStyle(.black)
                     }
                 }
             }
+            .navigationBarBackButtonHidden()
         }
+        .navigationBarBackButtonHidden()
         .sheet(isPresented: $showingStartPicker) {
             DatePicker("", selection: $startDate, displayedComponents: [.date])
                 .datePickerStyle(GraphicalDatePickerStyle())
@@ -67,6 +77,9 @@ struct DatePickerView: View {
             DatePicker("", selection: $endDate, in: startDate..., displayedComponents: [.date])
                 .datePickerStyle(GraphicalDatePickerStyle())
                 .presentationDetents([.medium])
+        }
+        .onAppear{
+
         }
     }
 }

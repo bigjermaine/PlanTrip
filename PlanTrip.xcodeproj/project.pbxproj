@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D05577E52CA00CFB003806DF /* SetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05577E42CA00CFB003806DF /* SetupViewModel.swift */; };
+		D05577E72CA0542E003806DF /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05577E62CA0542E003806DF /* Errors.swift */; };
+		D05577EA2CA064C3003806DF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05577E92CA064C3003806DF /* NetworkManager.swift */; };
+		D05577EC2CA08464003806DF /* HapticEffectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05577EB2CA08464003806DF /* HapticEffectManager.swift */; };
 		D0A5676D2C9BEAF1007EE3A3 /* PlanTripApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A5676C2C9BEAF1007EE3A3 /* PlanTripApp.swift */; };
 		D0A5676F2C9BEAF1007EE3A3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A5676E2C9BEAF1007EE3A3 /* ContentView.swift */; };
 		D0A567712C9BEAF3007EE3A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A567702C9BEAF3007EE3A3 /* Assets.xcassets */; };
@@ -32,9 +36,15 @@
 		D0A567B62C9C9596007EE3A3 /* DropdownMenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A567B52C9C9596007EE3A3 /* DropdownMenuList.swift */; };
 		D0A567B82C9C9599007EE3A3 /* DropdownMenuListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A567B72C9C9599007EE3A3 /* DropdownMenuListRow.swift */; };
 		D0A567BC2C9C95AF007EE3A3 /* DropdownMenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A567BB2C9C95AF007EE3A3 /* DropdownMenuOption.swift */; };
+		D0A567C02C9E912F007EE3A3 /* MoreNavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A567BF2C9E912F007EE3A3 /* MoreNavigationManager.swift */; };
+		D0A567C22C9E98F2007EE3A3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A567C12C9E98F2007EE3A3 /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D05577E42CA00CFB003806DF /* SetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewModel.swift; sourceTree = "<group>"; };
+		D05577E62CA0542E003806DF /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		D05577E92CA064C3003806DF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		D05577EB2CA08464003806DF /* HapticEffectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticEffectManager.swift; sourceTree = "<group>"; };
 		D0A567692C9BEAF1007EE3A3 /* PlanTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A5676C2C9BEAF1007EE3A3 /* PlanTripApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTripApp.swift; sourceTree = "<group>"; };
 		D0A5676E2C9BEAF1007EE3A3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +72,8 @@
 		D0A567B52C9C9596007EE3A3 /* DropdownMenuList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownMenuList.swift; sourceTree = "<group>"; };
 		D0A567B72C9C9599007EE3A3 /* DropdownMenuListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownMenuListRow.swift; sourceTree = "<group>"; };
 		D0A567BB2C9C95AF007EE3A3 /* DropdownMenuOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownMenuOption.swift; sourceTree = "<group>"; };
+		D0A567BF2C9E912F007EE3A3 /* MoreNavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreNavigationManager.swift; sourceTree = "<group>"; };
+		D0A567C12C9E98F2007EE3A3 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +87,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D05577E32CA00CE4003806DF /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D05577E42CA00CFB003806DF /* SetupViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D05577E82CA057B1003806DF /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				D05577E92CA064C3003806DF /* NetworkManager.swift */,
+				D05577EB2CA08464003806DF /* HapticEffectManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		D0A567602C9BEAF1007EE3A3 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +123,9 @@
 		D0A5676B2C9BEAF1007EE3A3 /* PlanTrip */ = {
 			isa = PBXGroup;
 			children = (
+				D05577E82CA057B1003806DF /* Manager */,
+				D05577E32CA00CE4003806DF /* ViewModels */,
+				D0A567BE2C9E8F40007EE3A3 /* Navigation */,
 				D0A567AB2C9C743C007EE3A3 /* Components */,
 				D0A567A62C9C63D4007EE3A3 /* Models */,
 				D0A5678C2C9C02E8007EE3A3 /* Fonts */,
@@ -119,6 +151,7 @@
 			children = (
 				D0A567702C9BEAF3007EE3A3 /* Assets.xcassets */,
 				D0A567852C9BF984007EE3A3 /* FontConstants.swift */,
+				D05577E62CA0542E003806DF /* Errors.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -184,8 +217,17 @@
 			isa = PBXGroup;
 			children = (
 				D0A5676E2C9BEAF1007EE3A3 /* ContentView.swift */,
+				D0A567C12C9E98F2007EE3A3 /* MainView.swift */,
 			);
 			path = MainView;
+			sourceTree = "<group>";
+		};
+		D0A567BE2C9E8F40007EE3A3 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				D0A567BF2C9E912F007EE3A3 /* MoreNavigationManager.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D05577EA2CA064C3003806DF /* NetworkManager.swift in Sources */,
 				D0A567BC2C9C95AF007EE3A3 /* DropdownMenuOption.swift in Sources */,
 				D0A567862C9BF984007EE3A3 /* FontConstants.swift in Sources */,
 				D0A567B42C9C9592007EE3A3 /* DropdownMenu.swift in Sources */,
@@ -278,8 +321,13 @@
 				D0A567B82C9C9599007EE3A3 /* DropdownMenuListRow.swift in Sources */,
 				D0A5676F2C9BEAF1007EE3A3 /* ContentView.swift in Sources */,
 				D0A567A32C9C150F007EE3A3 /* SetupView.swift in Sources */,
+				D0A567C02C9E912F007EE3A3 /* MoreNavigationManager.swift in Sources */,
 				D0A5676D2C9BEAF1007EE3A3 /* PlanTripApp.swift in Sources */,
+				D05577EC2CA08464003806DF /* HapticEffectManager.swift in Sources */,
+				D05577E52CA00CFB003806DF /* SetupViewModel.swift in Sources */,
+				D05577E72CA0542E003806DF /* Errors.swift in Sources */,
 				D0A567AD2C9C7454007EE3A3 /* DateField.swift in Sources */,
+				D0A567C22C9E98F2007EE3A3 /* MainView.swift in Sources */,
 				D0A567B62C9C9596007EE3A3 /* DropdownMenuList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

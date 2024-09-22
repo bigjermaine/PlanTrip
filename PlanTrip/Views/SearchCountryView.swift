@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SearchCountryView: View {
   @State private var searchText = ""
+  @EnvironmentObject private var nav:MoreNavigationManager
+  @EnvironmentObject private var setupViewModel :SetupViewModel
      let cities = [
          City(name: "Laghouat", region: "Laghouat", country: "Algeria", countryCode: "DZ"),
          City(name: "Lagos", region: "Murtala Muhammed", country: "Nigeria", countryCode: "NG"),
@@ -16,30 +18,86 @@ struct SearchCountryView: View {
      ]
   @FocusState private var isTextFieldFocused: Bool
   var body: some View {
-    ZStack{
-      Color.white.ignoresSafeArea()
-      VStack(alignment:.leading,spacing:20){
-        Text("Please select a city")
-          .font(.satoshiMedium(size: 12))
-          .foregroundColor(.grayText)
-         TextField("Lag", text: $searchText)
-          .font(.satoshiMedium(size: 14))
-          .frame(height: 76)
-          .padding(5)
-          .background(
-              RoundedRectangle(cornerRadius: 4)
-                .fill(Color.white)
-            )
-           .overlay(textViewBorder())
-           .focused($isTextFieldFocused)
-             countryListView
-               }
-               .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .leading)
-        Spacer()
+    NavigationView {
+      if setupViewModel.isLoading {
+        ProgressView()
+          .progressViewStyle(CircularProgressViewStyle())
+          .toolbar {
+              ToolbarItem(placement: .navigationBarLeading) {
+                  Button(action: {
+                    nav.goToRoot()
+                  }) {
+                      Image(systemName: "xmark")
+                      .foregroundStyle(.black)
+                      Text("Where")
+                      .font(.satoshiBold(size: 18))
+                      .foregroundStyle(.black)
+                  }
+              }
+          }
+          .navigationBarBackButtonHidden()
+          .padding()
+          .alert(isPresented:$setupViewModel.showAlertView) {
+            Alert(title: Text("Alert"),message:Text(setupViewModel.error ?? ""), dismissButton: .cancel())
+          }
+      }else {
+        ZStack{
+          Color.white.ignoresSafeArea()
+          VStack(alignment:.leading,spacing:20){
+            Text("Please select a city")
+              .font(.satoshiMedium(size: 12))
+              .foregroundColor(.grayText)
+            TextField("Lag", text: $searchText)
+              .font(.satoshiMedium(size: 14))
+              .frame(height: 76)
+              .padding(5)
+              .background(
+                RoundedRectangle(cornerRadius: 4)
+                  .fill(Color.white)
+              )
+              .overlay(textViewBorder())
+              .focused($isTextFieldFocused)
+            if !setupViewModel.cities.isEmpty {
+              countryListView
+            }else {
+              Text("No city Found Try Again Later")
+                .font(.satoshiMedium(size: 20))
+                .foregroundColor(.grayText)
+              Spacer()
+            }
+          }
+          .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .leading)
+          Spacer()
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                  nav.goToRoot()
+                }) {
+                    Image(systemName: "xmark")
+                    .foregroundStyle(.black)
+                    Text("Where")
+                    .font(.satoshiBold(size: 18))
+                    .foregroundStyle(.black)
+                }
+            }
+        }
+        .navigationBarBackButtonHidden()
+        .padding()
+        .alert(isPresented:$setupViewModel.showAlertView) {
+          Alert(title: Text("Alert"),message:Text(setupViewModel.error ?? ""), dismissButton: .cancel())
+        }
       }
 
-      .padding()
     }
+    .navigationBarBackButtonHidden()
+    .onAppear{
+      Task{
+        await setupViewModel.getCities()
+      }
+    }
+  }
+
   }
 
 
@@ -50,7 +108,7 @@ struct SearchCountryView: View {
 
 extension SearchCountryView {
   var countryListView:some View {
-    List(cities.filter { searchText.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(searchText) }) { city in
+    List(setupViewModel.cities.filter { searchText.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(searchText) }) { city in
       HStack {
         Image("MapPin 1")
         VStack(alignment: .leading) {
@@ -59,15 +117,21 @@ extension SearchCountryView {
           Text(city.region)
             .font(.satoshiMedium(size: 14))
             .foregroundColor(.gray)
+            .onTapGesture {
+              setupViewModel.cityName = city.name
+              nav.goToRoot()
+
+            }
         }
         .padding(.leading)
         Spacer()
-
-        Text(city.countryCode)
-          .font(.caption)
-          .padding(5)
-          .background(Color.gray.opacity(0.2))
-          .cornerRadius(5)
+        VStack{
+          Image(city.countryCode)
+          Text(city.countryCode)
+            .font(.caption)
+            .padding(5)
+            .cornerRadius(5)
+        }
       }
       .listRowSeparator(.hidden)
 

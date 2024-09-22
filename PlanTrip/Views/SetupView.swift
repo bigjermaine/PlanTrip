@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct SetupView: View {
-    var body: some View {
+  @StateObject private var nav = MoreNavigationManager()
+  @State private var toogleButtonSheet:Bool = false
+  @StateObject private var setupViewModel = SetupViewModel()
+  @State private var showAlertView: Bool = false
+  var body: some View {
+    NavigationStack(path: $nav.path) {
       ZStack{
-        Color.brown.ignoresSafeArea()
+        Color.ash.ignoresSafeArea()
         VStack{
           topView
           Spacer()
@@ -21,7 +26,38 @@ struct SetupView: View {
         .padding(.horizontal)
       }
       .frame(maxWidth: .infinity,maxHeight: .infinity)
+      .navigationDestination(for: MoreNavigationManager.Navigations.self) { route in
+        switch route {
+        case .Date:
+          DatePickerView()
+            .environmentObject(nav)
+            .environmentObject(setupViewModel)
+        case.search:
+          SearchCountryView()
+            .environmentObject(nav)
+            .environmentObject(setupViewModel)
+        case.main:
+          MainView()
+            .environmentObject(nav)
+            .environmentObject(setupViewModel)
+        case.Details:
+          ContentView()
+            .environmentObject(nav)
+            .environmentObject(setupViewModel)
+    
+        }
+      }
     }
+    .alert(isPresented:$showAlertView) {
+      Alert(title: Text("Alert"),message:Text(setupViewModel.error ?? ""), dismissButton: .cancel())
+    }
+    .sheet(isPresented: $toogleButtonSheet, content: {
+      CreateTripView(toogleButtonSheet: $toogleButtonSheet)
+        .environmentObject(nav)
+        .environmentObject(setupViewModel)
+    })
+
+  }
 }
 
 #Preview {
@@ -59,7 +95,7 @@ extension SetupView {
   var selectCityButton: some View {
     HStack{
       Button{
-
+        nav.loadView(.search)
       }label: {
         HStack{
           Image("MapPin")
@@ -67,7 +103,7 @@ extension SetupView {
           VStack(alignment:.leading){
             Text("Where to ?")
               .font(.satoshiMedium(size: 12))
-            Text("Select City")
+            Text(setupViewModel.cityName ?? "Select City")
               .font(.satoshiBold(size: 14))
           }
           .foregroundColor(.grayText)
@@ -87,14 +123,14 @@ extension SetupView {
   var startCalenderButton: some View {
     HStack{
       Button{
-
+        nav.loadView(.Date)
       }label: {
         HStack{
           Image("CalendarBlank")
           VStack(alignment:.leading){
             Text("Start Date")
               .font(.satoshiMedium(size: 12))
-            Text("Enter Date")
+            Text(setupViewModel.startDate ?? "Enter Date")
               .font(.satoshiBold(size: 14))
           }
           .foregroundColor(.grayText)
@@ -114,14 +150,14 @@ extension SetupView {
   var endCalenderButton: some View {
     HStack{
       Button{
-
+        nav.loadView(.Date)
       }label: {
         HStack{
           Image("CalendarBlank")
           VStack(alignment:.leading){
             Text("End Date")
               .font(.satoshiMedium(size: 12))
-            Text("End Date")
+            Text(setupViewModel.endDate ?? "End Date")
               .font(.satoshiBold(size: 14))
           }
           .foregroundColor(.grayText)
@@ -141,6 +177,13 @@ extension SetupView {
   var createATripButton: some View {
     HStack{
       Button{
+        setupViewModel.setUp()
+        if setupViewModel.loginDisabled {
+          toogleButtonSheet = true
+
+        }else {
+          showAlertView = true
+        }
 
       }label: {
         HStack{
@@ -152,12 +195,14 @@ extension SetupView {
         }
       }
 
+
       Spacer()
     }
-    .frame(maxWidth: .infinity,maxHeight:86)
+    .frame(maxWidth: .infinity,maxHeight:62)
     .background(Color(.systemBlue))
     .cornerRadius(4)
     .padding(.horizontal)
+
 
   }
 
