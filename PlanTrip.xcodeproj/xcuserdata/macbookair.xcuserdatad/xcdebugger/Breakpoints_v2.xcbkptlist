@@ -3,4 +3,54 @@
    uuid = "6BAE6C28-CF1A-4A6A-A3CD-E83B984766D8"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "81680613-836C-4878-9B44-421846ED0CA3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PlanTrip/Manager/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "fetchOptions()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "81680613-836C-4878-9B44-421846ED0CA3 - 3afb9270d641057e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for PlanTrip.NetworkManager.fetchOptions() async throws -&gt; Swift.Array&lt;PlanTrip.DropdownMenuOption&gt;"
+                  moduleName = "PlanTrip"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macbookair/Desktop/PlanTrip/PlanTrip/Manager/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "552">
+               </Location>
+               <Location
+                  uuid = "81680613-836C-4878-9B44-421846ED0CA3 - 1409480f7f64ff"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for PlanTrip.NetworkManager.fetchOptions() async throws -&gt; Swift.Array&lt;PlanTrip.DropdownMenuOption&gt;"
+                  moduleName = "PlanTrip"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macbookair/Desktop/PlanTrip/PlanTrip/Manager/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "124">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -11,6 +11,7 @@ import Foundation
 class SetupViewModel:ObservableObject {
   @Published var tripName:String = ""
   @Published var tripStyle:DropdownMenuOption?
+  @Published var tripStyles:[DropdownMenuOption] = []
   @Published var tripDescription:String = ""
   @Published var cityName:String?
   @Published var startDate:String?
@@ -46,6 +47,21 @@ class SetupViewModel:ObservableObject {
     }
   }
 
+  func fetchOptions()  async {
+    do {
+      tripStyles =   try await NetworkManager.shared.fetchOptions()
+    }catch let error as CityError {
+      HapticManager.shared.vibrate(for: .error)
+      isLoading = false
+      self.error = error.errorDescription
+      showAlertView = true
+    }catch {
+      HapticManager.shared.vibrate(for: .error)
+      isLoading = false
+      self.error  = "An unexpected error occurred."
+      showAlertView = true
+    }
+  }
   func getCities() async {
     isLoading = true
     do {

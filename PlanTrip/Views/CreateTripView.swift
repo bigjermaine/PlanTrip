@@ -40,7 +40,7 @@ struct CreateTripView: View {
               DropdownMenu(
                 selectedOption: $setupViewModel.tripStyle,
                 placeholder: "Select your travle style",
-                options: DropdownMenuOption.testAllMonths)
+                options: setupViewModel.tripStyles)
                 tripDescription
                 .padding(.horizontal)
             }
@@ -76,6 +76,11 @@ struct CreateTripView: View {
         .padding(.top,40)
         .alert(isPresented:$showAlertView) {
           Alert(title: Text("Alert"),message:Text(setupViewModel.error ?? ""), dismissButton: .cancel())
+        }
+        .onAppear{
+          Task{
+            await setupViewModel.fetchOptions()
+          }
         }
       }
     }

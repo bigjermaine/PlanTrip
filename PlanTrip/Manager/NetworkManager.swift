@@ -25,4 +25,19 @@ class NetworkManager {
       }
   }
 
+
+  func fetchOptions() async throws -> [DropdownMenuOption] {
+      guard let url = URL(string: "https://jermaine.free.beeceptor.com/values") else {
+          throw CityError.invalidURL
+      }
+
+      do {
+          let (data, _) = try await URLSession.shared.data(from: url)
+          let cities = try JSONDecoder().decode([DropdownMenuOption].self, from: data)
+          return cities
+      } catch {
+          throw CityError.requestFailed(error)
+      }
+  }
+
 }
