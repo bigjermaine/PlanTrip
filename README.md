@@ -98,6 +98,6 @@ coreDataManager.delete(index: indexSet)
 
 ## Conclusion
 
-This setup provides a streamlined way to manage remote data fetching and local data storage, making it easier to build data-driven i
+This setup provides a streamlined way to manage remote data fetching and local data storage, making it easier to build data-driven 
 
 ![Uploading Simulator Screenshot - iPhone x - 2024-09-23 at 04.32.23.png…]()
