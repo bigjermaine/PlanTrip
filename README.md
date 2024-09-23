@@ -1,213 +1,103 @@
-NetworkManager Class
-The NetworkManager class is designed to handle network requests for fetching city data and dropdown options from a specified API. It uses Swift's async/await feature for handling asynchronous operations, making the code cleaner and easier to read.
+# Network and Core Data Management
 
-Properties
-static let shared: A singleton instance of NetworkManager for global access throughout the application.
-Methods
-1. fetchCities() async throws -> [Citys]
-This method fetches an array of Citys from a predefined API endpoint.
+## Overview
 
-URL: https://jermaine.free.beeceptor.com/cities
-Return Type: An array of Citys.
-Errors:
-CityError.invalidURL: Thrown if the URL is invalid.
-CityError.requestFailed(error): Thrown if the network request fails or if decoding the response fails.
-Usage Example:
+This repository provides a `NetworkManager` class for handling asynchronous CRUD operations for city and option data, as well as a `CoreDataManager` class for managing Core Data storage of trip entities in an iOS application. This setup allows you to fetch data from a remote API and store it locally using Core Data.
 
-swift
+## Classes
 
+### `NetworkManager`
+
+The `NetworkManager` is a singleton responsible for fetching data from a remote API.
+
+#### Methods
+
+- **`fetchCities()`**
+  - Fetches a list of cities from a specified URL.
+  - Returns an array of `Citys` objects.
+  - Throws `CityError` on failure.
+  
+- **`fetchOptions()`**
+  - Fetches dropdown menu options from a specified URL.
+  - Returns an array of `DropdownMenuOption` objects.
+  - Throws `CityError` on failure.
+
+#### Errors
+
+- `CityError`
+  - `invalidURL`: Raised when the URL is invalid.
+  - `requestFailed(error)`: Raised when the network request fails.
+
+### `CoreDataManager`
+
+The `CoreDataManager` is an `ObservableObject` that manages Core Data operations for the `Trip` entity.
+
+#### Properties
+
+- **`container`**: `NSPersistentContainer` for Core Data storage.
+- **`savedEntity`**: A published array of `Trip` entities, which updates the UI when modified.
+
+#### Initializer
+
+- Initializes the persistent container and fetches existing trips.
+
+#### Methods
+
+- **`fetchTrips()`**
+  - Fetches all `Trip` entities from Core Data and updates `savedEntity`.
+
+- **`addTrip(name:style:description:city:start:end:)`**
+  - Adds a new trip with the specified details.
+  - Calls `saveBooking()` to persist the new entity.
+
+- **`saveBooking()`**
+  - Saves the current context to persist changes in Core Data.
+  - Calls `fetchTrips()` to refresh the saved entities.
+
+- **`delete(index:)`**
+  - Deletes a trip at the specified index in `savedEntity`.
+  - Calls `saveBooking()` to persist the deletion.
+
+## Usage
+
+### Fetching Data
+
+To fetch cities or options, simply call:
+
+```swift
 do {
     let cities = try await NetworkManager.shared.fetchCities()
-    // Process cities
-} catch {
-    print("Failed to fetch cities: \(error.localizedDescription)")
-}
-2. fetchOptions() async throws -> [DropdownMenuOption]
-This method retrieves an array of DropdownMenuOption from another endpoint.
-
-URL: https://jermaine.free.beeceptor.com/values
-Return Type: An array of DropdownMenuOption.
-Errors:
-CityError.invalidURL: Thrown if the URL is invalid.
-CityError.requestFailed(error): Thrown if the network request fails or if decoding the response fails.
-Usage Example:
-
-swift
-
-do {
     let options = try await NetworkManager.shared.fetchOptions()
-    // Process options
 } catch {
-    print("Failed to fetch options: \(error.localizedDescription)")
+    print("Error fetching data: \(error)")
 }
-Error Handling
-The NetworkManager utilizes a custom error type, CityError, which provides specific error descriptions. This allows for more granular error handling when performing network requests.
+```
 
-Example of the CityError Enum
-swift
+### Managing Trips
 
-enum RegistrationError:Error {
-    case invalidPhoneNumber
-    case errorTitle
-    case nonSetupDetails
-    case errorCreatingTrip
-    case errorOtp
-    case deletingAccount
-    var errorDescription:String? {
-        switch self {
-        case .invalidPhoneNumber:
-            return "PhoneNumber is invalid"
-        case .errorTitle:
-            return "Error"
-        case .errorOtp:
-            return "Error Otp"
-        case .deletingAccount:
-            return  "Warning Deleting Account"
-        case .nonSetupDetails:
-          return "Kindly choose a city, start and end date"
-        case .errorCreatingTrip:
-          return "Kindly choose a trip style or fill in all details"
-        }
-    }
-}
+To manage trips in Core Data:
 
+- To add a trip:
 
-enum CityError: Error, LocalizedError {
-    case invalidURL
-    case requestFailed(Error)
-    case decodingFailed(Error)
+```swift
+coreDataManager.addTrip(name: "Beach Vacation", style: "Relaxing", description: "A relaxing trip to the beach", city: "Miami", start: "2023-06-01", end: "2023-06-07")
+```
 
-    var errorDescription: String? {
-        switch self {
-        case .invalidURL:
-            return "The URL is invalid."
-        case .requestFailed(let error):
-            return "Request failed: \(error.localizedDescription)"
-        case .decodingFailed(let error):
-            return "Decoding failed: \(error.localizedDescription)"
-        }
-    }
-}
+- To delete a trip:
 
-Conclusion
-The NetworkManager class provides a streamlined approach to making network requests in Swift, utilizing the modern async/await paradigm for simplicity and efficiency. By encapsulating the network logic in a single class, the codebase remains organized and maintainable.
+```swift
+let indexSet = IndexSet(integer: 0) // Replace with the actual index
+coreDataManager.delete(index: indexSet)
+```
 
-Feel free to modify the documentation or class as needed for your specific application! Let me know if you need any further assistance.
+## Requirements
 
+- iOS 13.0+
+- Swift 5.0+
+- Core Data
 
+## Conclusion
 
-You said:
-no the general project 
-ChatGPT said:
-ChatGPT
-Sure! Below is a general project documentation template that outlines the purpose, structure, and functionality of your project, including the NetworkManager class and its endpoints.
+This setup provides a streamlined way to manage remote data fetching and local data storage, making it easier to build data-driven 
 
-Project Documentation
-Project Overview
-This project is a Swift-based application that fetches and displays city information and dropdown options from a remote API. It leverages modern Swift features like async/await for asynchronous programming, ensuring a smooth user experience while retrieving data from the network.
-
-Features
-Fetches a list of cities from an external API.
-Retrieves dropdown options for user selection.
-Utilizes SwiftUI for a responsive user interface.
-Implements error handling for network requests.
-Architecture
-The project follows a simple Model-View-ViewModel (MVVM) architecture:
-
-Model: Contains the data structures used in the app, such as Citys and DropdownMenuOption.
-View: SwiftUI views that present data to the user.
-ViewModel: The NetworkManager class handles data fetching and error management.
-NetworkManager
-The NetworkManager class is responsible for handling network requests. It provides two primary methods for fetching data from the API.
-
-Class Definition
-swift
-class NetworkManager {
-    static let shared = NetworkManager()
-    
-    func fetchCities() async throws -> [Citys] { ... }
-    
-    func fetchOptions() async throws -> [DropdownMenuOption] { ... }
-}
-Endpoints
-1. Fetch Cities
-Method: fetchCities() async throws -> [Citys]
-Description: Fetches an array of city data from the endpoint.
-Endpoint URL: https://jermaine.free.beeceptor.com/cities
-Return Type: An array of Citys.
-Error Handling:
-CityError.invalidURL: Thrown for invalid URLs.
-CityError.requestFailed(error): Thrown for network request failures.
-Example Usage
-swift
-Copy code
-do {
-    let cities = try await NetworkManager.shared.fetchCities()
-    // Handle cities data
-} catch {
-    print("Error fetching cities: \(error)")
-}
-2. Fetch Options
-Method: fetchOptions() async throws -> [DropdownMenuOption]
-Description: Retrieves dropdown menu options from the endpoint.
-Endpoint URL: https://jermaine.free.beeceptor.com/values
-Return Type: An array of DropdownMenuOption.
-Error Handling:
-CityError.invalidURL: Thrown for invalid URLs.
-CityError.requestFailed(error): Thrown for network request failures.
-Example Usage
-swift
-Copy code
-do {
-    let options = try await NetworkManager.shared.fetchOptions()
-    // Handle dropdown options
-} catch {
-    print("Error fetching options: \(error)")
-}
-Models
-Citys
-Represents a city with relevant properties.
-
-swift
-Copy code
-struct Citys: Codable {
-    let name: String
-    let region: String
-    let country: String
-    let countryCode: String
-    let imageAsset: String
-    let famousCity: String
-}
-DropdownMenuOption
-Represents options for a dropdown menu.
-
-swift
-Copy code
-struct DropdownMenuOption: Identifiable, Hashable, Codable {
-    let id: String
-    let option: String
-}
-Error Handling
-The project uses a custom error type, CityError, to handle different error scenarios:
-
-swift
-Copy code
-enum CityError: Error, LocalizedError {
-    case invalidURL
-    case requestFailed(Error)
-
-    var errorDescription: String? {
-        switch self {
-        case .invalidURL:
-            return "The URL is invalid."
-        case .requestFailed(let error):
-            return "Request failed: \(error.localizedDescription)"
-        }
-    }
-}
-User Interface
-The UI is built using SwiftUI, providing a responsive and modern user experience. It displays city data and dropdown options fetched from the network, handling loading states and errors gracefully.
-
-Conclusion
-This project showcases how to build a network-driven SwiftUI application that fetches data from an external API. It emphasizes clean architecture, error handling, and the use of modern Swift features.
-
+![Uploading Simulator Screenshot - iPhone x - 2024-09-23 at 04.32.23.png…]()
