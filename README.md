@@ -39,7 +39,7 @@ do {
 - **URL**: `https://jermaine.free.beeceptor.com/values`
 - **Response**: An array of `DropdownMenuOption` objects.
 
-#### Description
+Description
 
 The `fetchOptions()` method retrieves a list of options for a dropdown menu. This can be useful for populating selection menus in your application.
 
@@ -47,7 +47,7 @@ The `fetchOptions()` method retrieves a list of options for a dropdown menu. Thi
 
 You can call the `fetchOptions()` method like this:
 
-```swift
+swift
 do {
     let options = try await NetworkManager.shared.fetchOptions()
     // Use the options array as needed
@@ -57,24 +57,24 @@ do {
 }
 #### Errors
 
-- `CityError`
+  - `CityError`
   - `invalidURL`: Raised when the URL is invalid.
   - `requestFailed(error)`: Raised when the network request fails.
 
-### `CoreDataManager`
+`CoreDataManager`
 
 The `CoreDataManager` is an `ObservableObject` that manages Core Data operations for the `Trip` entity.
 
-#### Properties
+Properties
 
 - **`container`**: `NSPersistentContainer` for Core Data storage.
 - **`savedEntity`**: A published array of `Trip` entities, which updates the UI when modified.
 
-#### Initializer
+Initializer
 
 - Initializes the persistent container and fetches existing trips.
 
-#### Methods
+Methods
 
 - **`fetchTrips()`**
   - Fetches all `Trip` entities from Core Data and updates `savedEntity`.
@@ -91,7 +91,7 @@ The `CoreDataManager` is an `ObservableObject` that manages Core Data operations
   - Deletes a trip at the specified index in `savedEntity`.
   - Calls `saveBooking()` to persist the deletion.
 
-## Usage
+ Usage
 
 ### Fetching Data
 
