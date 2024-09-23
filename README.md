@@ -12,16 +12,49 @@ The `NetworkManager` is a singleton responsible for fetching data from a remote 
 
 #### Methods
 
-- **`fetchCities()`**
-  - Fetches a list of cities from a specified URL.
-  - Returns an array of `Citys` objects.
-  - Throws `CityError` on failure.
-  
-- **`fetchOptions()`**
-  - Fetches dropdown menu options from a specified URL.
-  - Returns an array of `DropdownMenuOption` objects.
-  - Throws `CityError` on failure.
+## Endpoints
 
+### 1. Fetch Cities
+
+- **Method**: GET
+- **URL**: `https://jermaine.free.beeceptor.com/cities`
+- **Response**: An array of `Citys` objects.
+
+#### Usage
+
+To fetch cities, call the `fetchCities()` method:
+
+```swift
+do {
+    let cities = try await NetworkManager.shared.fetchCities()
+    // Process the cities array
+} catch {
+    print("Error fetching cities: \(error)")
+}
+
+
+### 2. Fetch Dropdown Options
+
+- **Method**: GET
+- **URL**: `https://jermaine.free.beeceptor.com/values`
+- **Response**: An array of `DropdownMenuOption` objects.
+
+#### Description
+
+The `fetchOptions()` method retrieves a list of options for a dropdown menu. This can be useful for populating selection menus in your application.
+
+#### Request Example
+
+You can call the `fetchOptions()` method like this:
+
+```swift
+do {
+    let options = try await NetworkManager.shared.fetchOptions()
+    // Use the options array as needed
+    print(options)
+} catch {
+    print("Error fetching dropdown options: \(error)")
+}
 #### Errors
 
 - `CityError`
