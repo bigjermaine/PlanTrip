@@ -20,11 +20,11 @@ The `NetworkManager` is a singleton responsible for fetching data from a remote 
 - **URL**: `https://jermaine.free.beeceptor.com/cities`
 - **Response**: An array of `Citys` objects.
 
-#### Usage
+Usage
 
 To fetch cities, call the `fetchCities()` method:
 
-```swift
+swift
 do {
     let cities = try await NetworkManager.shared.fetchCities()
     // Process the cities array
@@ -33,7 +33,7 @@ do {
 }
 
 
-### 2. Fetch Dropdown Options
+2. Fetch Dropdown Options
 
 - **Method**: GET
 - **URL**: `https://jermaine.free.beeceptor.com/values`
@@ -43,7 +43,7 @@ Description
 
 The `fetchOptions()` method retrieves a list of options for a dropdown menu. This can be useful for populating selection menus in your application.
 
-#### Request Example
+ Request Example
 
 You can call the `fetchOptions()` method like this:
 
@@ -55,13 +55,14 @@ do {
 } catch {
     print("Error fetching dropdown options: \(error)")
 }
-#### Errors
+ Errors
 
   - `CityError`
   - `invalidURL`: Raised when the URL is invalid.
   - `requestFailed(error)`: Raised when the network request fails.
 
-`CoreDataManager`
+
+CoreDataManager
 
 The `CoreDataManager` is an `ObservableObject` that manages Core Data operations for the `Trip` entity.
 
