@@ -35,6 +35,19 @@ struct SearchCountryView: View {
                   }
               }
           }
+          .toolbar {
+              ToolbarItem(placement: .navigationBarLeading) {
+                  Button(action: {
+                    nav.goToRoot()
+                  }) {
+                      Image(systemName: "xmark")
+                      .foregroundStyle(.black)
+                      Text("Where")
+                      .font(.satoshiBold(size: 18))
+                      .foregroundStyle(.black)
+                  }
+              }
+          }
           .navigationBarBackButtonHidden()
           .padding()
           .alert(isPresented:$setupViewModel.showAlertView) {
@@ -61,6 +74,7 @@ struct SearchCountryView: View {
               countryListView
             }else {
               Text("No city Found Try Again Later")
+                .multilineTextAlignment(.center)
                 .font(.satoshiMedium(size: 20))
                 .foregroundColor(.grayText)
               Spacer()

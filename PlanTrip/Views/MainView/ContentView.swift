@@ -8,30 +8,53 @@
 import SwiftUI
 
 struct ContentView: View {
+  @State private var showAlertView: Bool = false
+  @EnvironmentObject private var nav:MoreNavigationManager
+  @EnvironmentObject private var setupViewModel :SetupViewModel
+  var trip: Trip
     var body: some View {
+      NavigationView {
         ScrollView {
-            VStack(spacing: 20) {
-                mainSection
-                activitiesView
-                HotelsView
-                flightView
-                tripItinerariesView
-                tripHotelView
-                activitiesHotelView
+          VStack(spacing: 20) {
+            mainSection
+            activitiesView
+            HotelsView
+            flightView
+            tripItinerariesView
+            tripHotelView
+            activitiesHotelView
+          }
+          .padding(.horizontal, 16)
+          .padding(.bottom, 20)
+
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                  nav.goToBack()
+                }) {
+                    Image("ArrowLeft")
+                    .foregroundStyle(.black)
+                    Text("Plan a Trip")
+                    .font(.satoshiBold(size: 18))
+                    .foregroundStyle(.black)
+                }
             }
-            .padding(.horizontal, 16)
-            .padding(.bottom, 20)
-          
+        }
+        .alert(isPresented:$showAlertView) {
+          Alert(title: Text("Alert"),message:Text("Comming soon version 2.0"), dismissButton: .cancel())
         }
         .edgesIgnoringSafeArea(.all)
         .frame(maxWidth: .infinity,maxHeight: .infinity)
         .navigationBarBackButtonHidden()
+      }
+      .navigationBarBackButtonHidden()
     }
 }
 
-#Preview {
-    ContentView()
-}
+//#Preview {
+// // ContentView(trip:)
+//}
 
 extension ContentView {
     var mainSection: some View {
@@ -44,13 +67,13 @@ extension ContentView {
                 HStack {
                     Image("CalendarImage")
                     .padding(.leading)
-                    Text("21 March 2024")
+                  Text(trip.startDate ?? "")
                         .font(.satoshiMedium(size: 12))
                         .foregroundColor(.grayText)
 
                     Image(.arrowRight)
                     Image("CalendarImage")
-                    Text("21 March 2024")
+                  Text(trip.endDate ?? "")
                         .font(.satoshiMedium(size: 12))
                         .foregroundColor(.grayText)
                         .padding(.trailing)
@@ -59,10 +82,10 @@ extension ContentView {
                 .background(Color.closeWhite)
                 .cornerRadius(4)
 
-                Text("Bahamas Family Trip")
+              Text(trip.tripName ?? "")
                     .font(.satoshiBold(size: 16))
                     .foregroundColor(Color.blackText)
-                Text("New York, United States of America | Solo Trip")
+              Text("\(trip.city ?? "" ) | \(trip.tripStyle ?? "")")
                     .font(.satoshiMedium(size: 12))
                     .foregroundColor(Color.grayText)
                 HStack(spacing: 10) {
@@ -78,7 +101,12 @@ extension ContentView {
     }
 
     var tripCollaborationButton: some View {
-        Button(action: {}) {
+        Button(action: {
+
+          showAlertView = true
+        }
+
+        ) {
             HStack {
                 Image(.handshake)
                 Text("Trip Collaboration")
@@ -93,7 +121,9 @@ extension ContentView {
     }
 
     var shareTipsButton: some View {
-        Button(action: {}) {
+        Button(action: {
+          showAlertView = true
+        }) {
             HStack {
                 Image(.shareIcon)
                 Text("Share Trip")
@@ -108,7 +138,9 @@ extension ContentView {
     }
 
     var dotsButton: some View {
-        Button(action: {}) {
+        Button(action: {
+          showAlertView = true
+        }) {
             Image(.dotsThree)
         }
     }
@@ -121,6 +153,7 @@ extension ContentView {
             Text("Build, personalize, and optimize your itineraries with our trip planner.")
               .font(.satoshiMedium(size: 14))
             Button {
+              showAlertView = true
             } label: {
               Text("Add Activities")
                 .font(.satoshiMedium(size: 14))
@@ -151,6 +184,7 @@ extension ContentView {
               .font(.satoshiMedium(size: 14))
               .foregroundColor(.grayText)
             Button {
+              showAlertView = true
             } label: {
               Text("Add Hotels")
                 .font(.satoshiMedium(size: 14))
@@ -180,6 +214,7 @@ extension ContentView {
               .font(.satoshiMedium(size: 14))
               .foregroundColor(.white)
             Button {
+              showAlertView = true
             } label: {
               Text("Add Flights")
                 .font(.satoshiMedium(size: 14))
@@ -224,6 +259,7 @@ extension ContentView {
                       .font(.satoshiBold(size: 16))
                       .foregroundColor(.grayText)
                     Button {
+                      showAlertView = true
                     } label: {
                       Text("Add Flights")
                         .font(.satoshiMedium(size: 14))
@@ -274,6 +310,7 @@ extension ContentView {
             .font(.satoshiBold(size: 16))
             .foregroundColor(.grayText)
           Button {
+            showAlertView = true
           } label: {
             Text("Add Hotel")
               .font(.satoshiMedium(size: 14))
@@ -322,6 +359,7 @@ extension ContentView {
             .font(.satoshiBold(size: 16))
             .foregroundColor(.grayText)
           Button {
+            showAlertView = true
           } label: {
             Text("Add Flight")
               .font(.satoshiMedium(size: 14))

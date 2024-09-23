@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SetupView: View {
   @StateObject private var nav = MoreNavigationManager()
+  @StateObject private var coreDataManager = CoreDataManager()
   @State private var toogleButtonSheet:Bool = false
   @StateObject private var setupViewModel = SetupViewModel()
   @State private var showAlertView: Bool = false
@@ -38,10 +39,12 @@ struct SetupView: View {
             .environmentObject(setupViewModel)
         case.main:
           MainView()
+            .environmentObject(coreDataManager)
             .environmentObject(nav)
             .environmentObject(setupViewModel)
-        case.Details:
-          ContentView()
+        case.Details(let menuRoute):
+          ContentView(trip: menuRoute)
+            .environmentObject(coreDataManager)
             .environmentObject(nav)
             .environmentObject(setupViewModel)
     
@@ -53,6 +56,7 @@ struct SetupView: View {
     }
     .sheet(isPresented: $toogleButtonSheet, content: {
       CreateTripView(toogleButtonSheet: $toogleButtonSheet)
+        .environmentObject(coreDataManager)
         .environmentObject(nav)
         .environmentObject(setupViewModel)
     })
@@ -180,7 +184,6 @@ extension SetupView {
         setupViewModel.setUp()
         if setupViewModel.loginDisabled {
           toogleButtonSheet = true
-
         }else {
           showAlertView = true
         }

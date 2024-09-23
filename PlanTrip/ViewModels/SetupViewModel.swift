@@ -17,6 +17,7 @@ class SetupViewModel:ObservableObject {
   @Published var startDate:String?
   @Published var endDate:String?
   @Published var error:String?
+  @Published var daysLeft: Int?
   @Published var isLoading: Bool = false
   @Published  var showAlertView: Bool = false
   @Published var cities:[Citys] = []
@@ -81,6 +82,8 @@ class SetupViewModel:ObservableObject {
       showAlertView = true
     }
   }
+
+   
 }
 
 

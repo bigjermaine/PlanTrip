@@ -16,7 +16,7 @@ struct City: Identifiable {
 }
 
 struct Citys: Codable,Identifiable{
-    var id = UUID()
+    let id = UUID()
     let name: String
     let region: String
     let country: String

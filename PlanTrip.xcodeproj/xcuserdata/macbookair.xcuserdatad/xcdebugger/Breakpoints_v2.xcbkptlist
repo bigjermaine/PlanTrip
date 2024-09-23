@@ -7,46 +7,46 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "81680613-836C-4878-9B44-421846ED0CA3"
+            uuid = "D63BCB70-15A8-4E2A-B54B-B88666DDF8F7"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PlanTrip/Manager/NetworkManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "fetchOptions()"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "fetchCities()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "81680613-836C-4878-9B44-421846ED0CA3 - 3afb9270d641057e"
+                  uuid = "D63BCB70-15A8-4E2A-B54B-B88666DDF8F7 - 92b54a8e60fd30f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for PlanTrip.NetworkManager.fetchOptions() async throws -&gt; Swift.Array&lt;PlanTrip.DropdownMenuOption&gt;"
+                  symbolName = "(3) suspend resume partial function for PlanTrip.NetworkManager.fetchCities() async throws -&gt; Swift.Array&lt;PlanTrip.Citys&gt;"
                   moduleName = "PlanTrip"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/macbookair/Desktop/PlanTrip/PlanTrip/Manager/NetworkManager.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
                   offsetFromSymbolStart = "552">
                </Location>
                <Location
-                  uuid = "81680613-836C-4878-9B44-421846ED0CA3 - 1409480f7f64ff"
+                  uuid = "D63BCB70-15A8-4E2A-B54B-B88666DDF8F7 - 41a8f16697fc0d0e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for PlanTrip.NetworkManager.fetchOptions() async throws -&gt; Swift.Array&lt;PlanTrip.DropdownMenuOption&gt;"
+                  symbolName = "(4) suspend resume partial function for PlanTrip.NetworkManager.fetchCities() async throws -&gt; Swift.Array&lt;PlanTrip.Citys&gt;"
                   moduleName = "PlanTrip"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/macbookair/Desktop/PlanTrip/PlanTrip/Manager/NetworkManager.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
                   offsetFromSymbolStart = "124">
                </Location>
             </Locations>

@@ -15,6 +15,7 @@ struct CreateTripView: View {
   @EnvironmentObject private var setupViewModel :SetupViewModel
   @State private var showAlertView: Bool = false
   @EnvironmentObject private var nav:MoreNavigationManager
+  @EnvironmentObject  private var coreDataManager:CoreDataManager
   @Binding  var toogleButtonSheet:Bool
     var body: some View {
       ScrollView{
@@ -48,9 +49,11 @@ struct CreateTripView: View {
             Button(action: {
               setupViewModel.tripSetup()
               if   setupViewModel.tripCreateDisabled {
-                toogleButtonSheet = false
-                nav.loadView(.main)
-
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                  coreDataManager.addTrip(name: setupViewModel.tripName, style: setupViewModel.tripStyle?.option, description: setupViewModel.tripDescription, city: setupViewModel.cityName, start: setupViewModel.startDate, end: setupViewModel.endDate)
+                  toogleButtonSheet = false
+                  nav.loadView(.main)
+                }
               }else {
                 showAlertView = true
 

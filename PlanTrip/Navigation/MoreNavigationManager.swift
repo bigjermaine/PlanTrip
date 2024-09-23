@@ -14,11 +14,15 @@ class MoreNavigationManager: ObservableObject {
     case search
     case Date 
     case main
-    case Details
+    case Details(Trip)
   }
 
   func goToRoot() {
       path.removeAll()
+  }
+
+  func goToBack() {
+    path.removeLast()
   }
 
   func loadView(_ item: Navigations) {
