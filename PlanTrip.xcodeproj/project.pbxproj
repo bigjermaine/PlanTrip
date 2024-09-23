@@ -14,6 +14,7 @@
 		D05577EE2CA08FA9003806DF /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D05577ED2CA08FA9003806DF /* Launch Screen.storyboard */; };
 		D05577F12CA09613003806DF /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D05577EF2CA09613003806DF /* CoreDataModel.xcdatamodeld */; };
 		D05577F32CA096FE003806DF /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05577F22CA096FE003806DF /* CoreDataManager.swift */; };
+		D05577F52CA116C0003806DF /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05577F42CA116C0003806DF /* MainCell.swift */; };
 		D0A5676D2C9BEAF1007EE3A3 /* PlanTripApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A5676C2C9BEAF1007EE3A3 /* PlanTripApp.swift */; };
 		D0A5676F2C9BEAF1007EE3A3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A5676E2C9BEAF1007EE3A3 /* ContentView.swift */; };
 		D0A567712C9BEAF3007EE3A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A567702C9BEAF3007EE3A3 /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 		D05577ED2CA08FA9003806DF /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		D05577F02CA09613003806DF /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		D05577F22CA096FE003806DF /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		D05577F42CA116C0003806DF /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
 		D0A567692C9BEAF1007EE3A3 /* PlanTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A5676C2C9BEAF1007EE3A3 /* PlanTripApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTripApp.swift; sourceTree = "<group>"; };
 		D0A5676E2C9BEAF1007EE3A3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			children = (
 				D0A567B22C9C9586007EE3A3 /* DropDown */,
 				D0A567AC2C9C7454007EE3A3 /* DateField.swift */,
+				D05577F42CA116C0003806DF /* MainCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				D0A5676D2C9BEAF1007EE3A3 /* PlanTripApp.swift in Sources */,
 				D05577EC2CA08464003806DF /* HapticEffectManager.swift in Sources */,
 				D05577F12CA09613003806DF /* CoreDataModel.xcdatamodeld in Sources */,
+				D05577F52CA116C0003806DF /* MainCell.swift in Sources */,
 				D05577E52CA00CFB003806DF /* SetupViewModel.swift in Sources */,
 				D05577E72CA0542E003806DF /* Errors.swift in Sources */,
 				D0A567AD2C9C7454007EE3A3 /* DateField.swift in Sources */,
