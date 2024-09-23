@@ -73,7 +73,7 @@ struct MainView: View {
       coreDataManager.fetchTrips()
     }
     .alert(isPresented:$showAlertView) {
-      Alert(title: Text("Alert"),message:Text("Subcribe To Get Multi Trips Creation Or Reach To Me @danieljermaine97@gmail.com "), dismissButton: .cancel())
+      Alert(title: Text("Alert"),message:Text("Subcribe To Get Multi Trips Creation Or Reach Out To Me @danieljermaine97@gmail.com "), dismissButton: .cancel())
     }
 
   }
